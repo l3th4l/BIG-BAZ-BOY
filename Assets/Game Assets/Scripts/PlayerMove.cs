@@ -1,37 +1,25 @@
 ﻿using UnityEngine;
 
-internal sealed class CharMove : MonoBehaviour
+[RequireComponent(typeof(Rigidbody2D))]
+internal sealed class PlayerMove : MonoBehaviour
 {
     [SerializeField]
     private LayerMask groundMask;
 
     [SerializeField]
-    private KeyCode jumpButton;
+    private float jumpForce = 10f;
 
     [SerializeField]
-    private float jumpForce;
+    private float maxGroundedHeight = 0.6f;
 
     [SerializeField]
-    private float maxGroundedHeight;
-
-    [SerializeField]
-    private float moveSpeed;
+    private float moveSpeed = 5f;
 
     private Rigidbody2D rb;
 
-    public LayerMask GroundMask
+    private bool IsGrounded(float heightThreshold)
     {
-        get { return this.groundMask; }
-    }
-
-    public float MaxGroundedHeight
-    {
-        get { return this.maxGroundedHeight; }
-    }
-
-    private bool IsGrounded(float HeightThreshold)
-    {
-        RaycastHit2D hit = Physics2D.Raycast(this.transform.position, Vector2.down, HeightThreshold, this.groundMask);
+        RaycastHit2D hit = Physics2D.Raycast(this.transform.position, Vector2.down, heightThreshold, this.groundMask);
         if (hit)
         {
             print(hit.transform.name);
@@ -51,9 +39,9 @@ internal sealed class CharMove : MonoBehaviour
 
     private void Update()
     {
-        float movInp = Input.GetAxisRaw("Horizontal") * moveSpeed;
+        float movInp = Input.GetAxisRaw("Horizontal") * this.moveSpeed;
         print(movInp);
-        if (Input.GetKeyDown(this.jumpButton))
+        if (Input.GetButtonDown("Jump"))
         {
             if (this.IsGrounded(this.maxGroundedHeight))
             {
