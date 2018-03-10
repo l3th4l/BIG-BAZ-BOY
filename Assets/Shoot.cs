@@ -1,45 +1,54 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Shoot : MonoBehaviour
-{ 
-    public float recoilForce;
-    public KeyCode fire;
-    private Rigidbody2D RB;
-    private CharMove ChMove;
-    private void Start()
-    {
-        RB = GetComponent<Rigidbody2D>();
-        ChMove = GetComponent<CharMove>();
-    }
+[RequireComponent(typeof(CharMove), typeof(Rigidbody2D))]
+internal sealed class Shoot : MonoBehaviour
+{
+    private CharMove chMove;
 
-    void Update ()
+    [SerializeField]
+    private KeyCode fire;
+
+    private Rigidbody2D rb;
+
+    [SerializeField]
+    private float recoilForce;
+
+    private bool IsGrounded(float HeightThreshold)
     {
-        Vector3 mouseDir =  (Camera.main.WorldToScreenPoint(transform.position) - Input.mousePosition).normalized;
-        if (Input.GetKeyDown(fire))
+        RaycastHit2D hit = Physics2D.Raycast(this.transform.position, Vector2.down, HeightThreshold, this.chMove.GroundMask);
+        if (hit && hit.collider != null)
         {
-            if (!isGrounded(ChMove.MaxGroundedHeight))
+            if (hit.transform.CompareTag("Walkable"))
             {
-                print("KYS");
-                recoil(recoilForce, mouseDir);
+                return true;
             }
         }
-	}
-    void recoil(float RF, Vector3 Dir)
-    {
-        //RB.AddRelativeForce(Dir * RF,ForceMode2D.Impulse);
-        RB.velocity = Dir * RF;
+
+        return false;
     }
 
-    bool isGrounded(float HeightThreshold)
+    private void Recoil(float RF, Vector3 Dir)
     {
-        RaycastHit2D _hit = Physics2D.Raycast(transform.position, Vector2.down, HeightThreshold,ChMove.GroundMask);
-        if (_hit != null && _hit.collider != null)
+        //RB.AddRelativeForce(Dir * RF,ForceMode2D.Impulse);
+        this.rb.velocity = Dir * RF;
+    }
+
+    private void Start()
+    {
+        this.rb = GetComponent<Rigidbody2D>();
+        this.chMove = GetComponent<CharMove>();
+    }
+
+    private void Update()
+    {
+        Vector3 mouseDir = (Camera.main.WorldToScreenPoint(this.transform.position) - Input.mousePosition).normalized;
+        if (Input.GetKeyDown(this.fire))
         {
-            if (_hit.transform.CompareTag("Walkable"))
-                return true;
+            if (!this.IsGrounded(this.chMove.MaxGroundedHeight))
+            {
+                print("KYS");
+                this.Recoil(this.recoilForce, mouseDir);
+            }
         }
-        return false;
     }
 }

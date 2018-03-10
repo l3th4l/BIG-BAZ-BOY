@@ -1,20 +1,22 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class CameraMove : MonoBehaviour
+internal sealed class CameraMove : MonoBehaviour
 {
-    public float cVelocity;
-    public Transform target;
-    Vector3 offset;
+    private Vector3 offset;
 
-    void Start()
+    [SerializeField]
+    private float speed;
+
+    [SerializeField]
+    private Transform target;
+
+    private void FixedUpdate()
     {
-        offset = transform.position - target.position;
+        this.transform.position = Vector3.Lerp(this.transform.position, this.target.position + this.offset, this.speed);
     }
-	void FixedUpdate ()
+
+    private void Start()
     {
-        transform.position = Vector3.Lerp(transform.position , target.position + offset, cVelocity);
-        
-	}
+        this.offset = this.transform.position - this.target.position;
+    }
 }
