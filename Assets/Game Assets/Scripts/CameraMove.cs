@@ -10,14 +10,14 @@ internal sealed class CameraMove : MonoBehaviour
     [SerializeField]
     private Transform target;
 
-    private void FixedUpdate()
+    private void LateUpdate()
     {
         this.transform.position = Vector3.Lerp(this.transform.position, this.target.position + this.offset, this.speed);
     }
 
     private void Start()
     {
-        this.transform.position = Vector3.Lerp(this.transform.position, this.target.position + this.offset, this.speed);
         this.offset = this.transform.position - this.target.position;
+        this.transform.position = Vector3.Lerp(this.transform.position, this.target.position + this.offset, this.speed);
     }
 }

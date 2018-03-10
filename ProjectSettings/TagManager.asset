@@ -15,7 +15,7 @@ TagManager:
   - 
   - 
   - Walkable
-  - 
+  - Rocket
   - 
   - 
   - 
@@ -44,4 +44,10 @@ TagManager:
     locked: 0
   - name: Background
     uniqueID: 727177987
+    locked: 0
+  - name: Player
+    uniqueID: 343434361
+    locked: 0
+  - name: Rocket
+    uniqueID: 2388969007
     locked: 0
