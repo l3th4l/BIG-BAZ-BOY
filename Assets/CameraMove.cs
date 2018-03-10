@@ -17,4 +17,8 @@ public class CameraMove : MonoBehaviour
         transform.position = Vector3.Lerp(transform.position , target.position + offset, cVelocity);
         
 	}
+    void blank()
+    {
+
+    }
 }
