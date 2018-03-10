@@ -1,49 +1,71 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class CharMove : MonoBehaviour
+internal sealed class CharMove : MonoBehaviour
 {
-    //Pub
-    public float JumpForce;
-    public float MoveSpeed;
-    public float MaxGroundedHeight;
-    public LayerMask GroundMask;
-    //Ser
     [SerializeField]
-    private KeyCode Jump;
-    //Pri
-    private Rigidbody2D RB;
+    private LayerMask groundMask;
+
+    [SerializeField]
+    private KeyCode jumpButton;
+
+    [SerializeField]
+    private float jumpForce;
+
+    [SerializeField]
+    private float maxGroundedHeight;
+
+    [SerializeField]
+    private float moveSpeed;
+
+    private Rigidbody2D rb;
+
+    public LayerMask GroundMask
+    {
+        get { return this.groundMask; }
+    }
+
+    public float MaxGroundedHeight
+    {
+        get { return this.maxGroundedHeight; }
+    }
+
+    private bool IsGrounded(float HeightThreshold)
+    {
+        RaycastHit2D hit = Physics2D.Raycast(this.transform.position, Vector2.down, HeightThreshold, this.groundMask);
+        if (hit)
+        {
+            print(hit.transform.name);
+            if (hit.transform.CompareTag("Walkable"))
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
 
     private void Start()
     {
-        RB = GetComponent<Rigidbody2D>();
+        this.rb = GetComponent<Rigidbody2D>();
     }
-    void Update()
+
+    private void Update()
     {
-        float movInp = Input.GetAxisRaw("Horizontal") * MoveSpeed;
+        float movInp = Input.GetAxisRaw("Horizontal") * moveSpeed;
         print(movInp);
-        if (Input.GetKeyDown(Jump))
+        if (Input.GetKeyDown(this.jumpButton))
         {
-            if (isGrounded(MaxGroundedHeight))
-                RB.AddForce(transform.up * JumpForce, ForceMode2D.Impulse);
+            if (this.IsGrounded(this.maxGroundedHeight))
+            {
+                this.rb.AddForce(this.transform.up * this.jumpForce, ForceMode2D.Impulse);
+            }
         }
         else
         {
-            if (isGrounded(MaxGroundedHeight))
-                RB.velocity = new Vector2(movInp, RB.velocity.y);
+            if (this.IsGrounded(this.maxGroundedHeight))
+            {
+                this.rb.velocity = new Vector2(movInp, this.rb.velocity.y);
+            }
         }
-    }
-
-    bool isGrounded(float HeightThreshold)
-    {
-        RaycastHit2D _hit = Physics2D.Raycast(transform.position, Vector2.down, HeightThreshold, GroundMask);
-        if(_hit != null)
-        {
-            print(_hit.transform.name);
-            if (_hit.transform.CompareTag("Walkable"))
-                return true;
-        }
-        return false;
     }
 }

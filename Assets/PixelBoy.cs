@@ -1,38 +1,41 @@
 using UnityEngine;
-using System.Collections;
 
 [ExecuteInEditMode]
 [AddComponentMenu("Image Effects/PixelBoy")]
-public class PixelBoy : MonoBehaviour
+internal sealed class PixelBoy : MonoBehaviour
 {
-    public int w = 720;
+    [SerializeField]
+    private Camera cam;
+
     private int h;
 
-    public Camera cam;
+    [SerializeField]
+    private int w = 720;
 
     protected void Start()
     {
-    	cam = GetComponent<Camera>();
-    	
+        this.cam = GetComponent<Camera>();
+
         if (!SystemInfo.supportsImageEffects)
         {
-            enabled = false;
+            this.enabled = false;
             return;
         }
     }
-    void Update() {
 
-        float ratio = ((float)cam.pixelHeight / (float)cam.pixelWidth);
-        h = Mathf.RoundToInt(w * ratio);
-        
-    }
-    void OnRenderImage(RenderTexture source, RenderTexture destination)
+    private void OnRenderImage(RenderTexture source, RenderTexture destination)
     {
         source.filterMode = FilterMode.Point;
-        RenderTexture buffer = RenderTexture.GetTemporary(w, h, -1);
+        RenderTexture buffer = RenderTexture.GetTemporary(this.w, this.h, -1);
         buffer.filterMode = FilterMode.Point;
         Graphics.Blit(source, buffer);
         Graphics.Blit(buffer, destination);
         RenderTexture.ReleaseTemporary(buffer);
+    }
+
+    private void Update()
+    {
+        float ratio = ((float)this.cam.pixelHeight / (float)this.cam.pixelWidth);
+        this.h = Mathf.RoundToInt(this.w * ratio);
     }
 }
