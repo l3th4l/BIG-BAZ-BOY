@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 114171336453142128}
   - component: {fileID: 114444021457321390}
   - component: {fileID: 114099784916080692}
+  - component: {fileID: 114141454264637150}
   m_Layer: 10
   m_Name: Player
   m_TagString: Untagged
@@ -123,7 +124,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7819c7aa46eed6d488f48224bdf332c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: {fileID: 11400000, guid: 4be5cc92bf84ab14a9c296209f4ef32c, type: 2}
+  maxHealth:
+    constantValue: 0
+    useConstant: 0
+    variable: {fileID: 11400000, guid: 4ebbbb88e447d334593fd4c35e7d9343, type: 2}
+  cooldownTime:
+    constantValue: 0
+    useConstant: 0
+    variable: {fileID: 11400000, guid: f9e0aa6eacea7f147b20f767705d0576, type: 2}
+  regenStart: {fileID: 11400000, guid: 4e4357b8eeb8e5a489609a27cb5a1688, type: 2}
+  regenStop: {fileID: 11400000, guid: 9998d118588982e498e1762fda7d3b08, type: 2}
+--- !u!114 &114141454264637150
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1215142776131728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd93ff3426b53144cb43e898a5dc0f11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: {fileID: 11400000, guid: 4be5cc92bf84ab14a9c296209f4ef32c, type: 2}
+  maxHealth:
+    constantValue: 0
+    useConstant: 0
+    variable: {fileID: 11400000, guid: 4ebbbb88e447d334593fd4c35e7d9343, type: 2}
+  regenRate: 5
+  regenStart: {fileID: 11400000, guid: 4e4357b8eeb8e5a489609a27cb5a1688, type: 2}
+  regenStop: {fileID: 11400000, guid: 9998d118588982e498e1762fda7d3b08, type: 2}
 --- !u!114 &114171336453142128
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -191,6 +221,7 @@ MonoBehaviour:
   rocketPrefab: {fileID: 114213917048804804, guid: 085eac24bd039d14cbbbf1f133535517,
     type: 2}
   rocketSpawn: {fileID: 4444334005934548}
+  dampFactor: 50
 --- !u!212 &212124741461390792
 SpriteRenderer:
   m_ObjectHideFlags: 1

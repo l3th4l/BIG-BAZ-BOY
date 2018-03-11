@@ -2,11 +2,18 @@
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
+using ScriptableObjectUtility.Variables;
 using UnityEngine;
 
 internal sealed class CheckpointManager : MonoBehaviour
 {
     private IFormatter formatter = new BinaryFormatter();
+
+    [SerializeField]
+    private FloatVariable playerHealth;
+
+    [SerializeField]
+    private FloatReference playerMaxHealth;
 
     private Saveable[] saveables;
 
@@ -28,6 +35,8 @@ internal sealed class CheckpointManager : MonoBehaviour
                 this.saveables[i].Load(entityStates[i]);
             }
         }
+
+        this.playerHealth.Value = this.playerMaxHealth;
     }
 
     public void Save()
@@ -41,6 +50,8 @@ internal sealed class CheckpointManager : MonoBehaviour
     private void Start()
     {
         this.saveables = CheckpointManager.FindObjectsOfType<Saveable>();
+
+        this.Load();
     }
 
     private void Update()
