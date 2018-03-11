@@ -8,7 +8,7 @@ internal sealed class Rocket : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        ////Rocket.Instantiate(this.explosionPrefab, this.transform.position, Quaternion.identity);
+        Rocket.Instantiate(this.explosionPrefab, this.transform.position, Quaternion.identity);
         Rocket.Destroy(this.gameObject);
     }
 }

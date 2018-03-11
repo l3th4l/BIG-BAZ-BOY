@@ -51,3 +51,6 @@ TagManager:
   - name: Rocket
     uniqueID: 2388969007
     locked: 0
+  - name: Explosion
+    uniqueID: 2083694503
+    locked: 0
