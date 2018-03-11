@@ -38,7 +38,10 @@ internal sealed class Rocket : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Rocket.Instantiate(this.explosionPrefab, this.transform.position, Quaternion.identity);
-        Debug.Log("Gonna kms 1");
+
+        GetComponent<Collider2D>().enabled = false;
+        GetComponent<SpriteRenderer>().enabled = false;
+
         var playerCollider = Physics2D.OverlapCircle(this.transform.position, this.PlayerDamageRadius, this.playerDamageLayer);
         if (playerCollider != null)
         {

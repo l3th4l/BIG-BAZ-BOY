@@ -1,0 +1,249 @@
+fileFormatVersion: 2
+guid: a8f997247abe651409dce5ce7c0e04de
+timeCreated: 1520807667
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Armature
+    100002: Bone
+    100004: //RootNode
+    100006: Chest
+    100008: Empty
+    100010: Empty.001
+    100012: Empty.002
+    100014: Empty.003
+    100016: Head
+    100018: Head_end
+    100020: LFoot
+    100022: LFoot_end
+    100024: LLArm
+    100026: LLArm_end
+    100028: LLLeg
+    100030: LRLeg
+    100032: LUArm
+    100034: Neck
+    100036: Plane
+    100038: Plane.001
+    100040: Plane.002
+    100042: Plane.003
+    100044: Plane.004
+    100046: Plane.005
+    100048: Plane.006
+    100050: Plane.007
+    100052: Plane.008
+    100054: Plane.009
+    100056: Plane.010
+    100058: Plane.011
+    100060: Plane.012
+    100062: RFoot
+    100064: RFoot_end
+    100066: RLArm
+    100068: RLArm_end
+    100070: RUArm
+    100072: Sun
+    100074: ULLeg
+    100076: URLeg
+    400000: Armature
+    400002: Bone
+    400004: //RootNode
+    400006: Chest
+    400008: Empty
+    400010: Empty.001
+    400012: Empty.002
+    400014: Empty.003
+    400016: Head
+    400018: Head_end
+    400020: LFoot
+    400022: LFoot_end
+    400024: LLArm
+    400026: LLArm_end
+    400028: LLLeg
+    400030: LRLeg
+    400032: LUArm
+    400034: Neck
+    400036: Plane
+    400038: Plane.001
+    400040: Plane.002
+    400042: Plane.003
+    400044: Plane.004
+    400046: Plane.005
+    400048: Plane.006
+    400050: Plane.007
+    400052: Plane.008
+    400054: Plane.009
+    400056: Plane.010
+    400058: Plane.011
+    400060: Plane.012
+    400062: RFoot
+    400064: RFoot_end
+    400066: RLArm
+    400068: RLArm_end
+    400070: RUArm
+    400072: Sun
+    400074: ULLeg
+    400076: URLeg
+    2100000: Material.001
+    2300000: Plane
+    2300002: Plane.001
+    2300004: Plane.002
+    2300006: Plane.003
+    2300008: Plane.004
+    2300010: Plane.005
+    2300012: Plane.006
+    2300014: Plane.007
+    2300016: Plane.008
+    2300018: Plane.009
+    2300020: Plane.010
+    2300022: Plane.011
+    2300024: Plane.012
+    3300000: Plane
+    3300002: Plane.001
+    3300004: Plane.002
+    3300006: Plane.003
+    3300008: Plane.004
+    3300010: Plane.005
+    3300012: Plane.006
+    3300014: Plane.007
+    3300016: Plane.008
+    3300018: Plane.009
+    3300020: Plane.010
+    3300022: Plane.011
+    3300024: Plane.012
+    4300000: Plane.004
+    4300002: Plane.009
+    4300004: Plane.001
+    4300006: Plane.012
+    4300008: Plane.002
+    4300010: Plane.003
+    4300012: Plane.007
+    4300014: Plane.011
+    4300016: Plane.010
+    4300018: Plane.008
+    4300020: Plane
+    4300022: Plane.005
+    4300024: Plane.006
+    7400000: Empty.003|Empty.001Action
+    7400002: Empty.003|Empty.002Action
+    7400004: Empty.003|Empty.003Action
+    7400006: Empty.003|EmptyAction
+    7400008: Empty.002|Empty.001Action
+    7400010: Empty.002|Empty.002Action
+    7400012: Empty.002|Empty.003Action
+    7400014: Empty.002|EmptyAction
+    7400016: Empty.001|Empty.001Action
+    7400018: Empty.001|Empty.002Action
+    7400020: Empty.001|Empty.003Action
+    7400022: Empty.001|EmptyAction
+    7400024: Empty|Empty.001Action
+    7400026: Empty|Empty.002Action
+    7400028: Empty|Empty.003Action
+    7400030: Empty|EmptyAction
+    7400032: Empty.003|Action
+    7400034: Empty.002|Action
+    7400036: Empty.001|Action
+    7400038: Empty|Action
+    7400040: Armature|Action
+    7400042: Armature|Empty.001Action
+    7400044: Armature|Empty.002Action
+    7400046: Armature|Empty.003Action
+    7400048: Armature|EmptyAction
+    7400050: Armature|Action.001
+    7400052: Empty.003|Action.002
+    7400054: Empty.002|Action.002
+    7400056: Empty.001|Action.002
+    7400058: Empty|Action.002
+    7400060: Armature|Action.002
+    7400062: Plane.012|Action
+    7400064: Plane.012|Action.002
+    7400066: Plane.012|Empty.001Action
+    7400068: Plane.012|Empty.002Action
+    7400070: Plane.012|Empty.003Action
+    7400072: Plane.012|EmptyAction
+    9500000: //RootNode
+    10800000: Sun
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: 2100000, guid: bf3d15154c7a11e4cb4875089e7a3a86, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.2
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
