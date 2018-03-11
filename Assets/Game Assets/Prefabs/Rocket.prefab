@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 212807632168475078}
   - component: {fileID: 50807850657108186}
   - component: {fileID: 58963112613024652}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Rocket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1004496066188588}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -4.31, y: -0.29, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -89,8 +89,63 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3afc79fe74f3b0944875477b305b022a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyDamageRadius: 1
   explosionPrefab: {fileID: 1165111545300372, guid: 7562209cd4461ef41baf7989a3841e76,
     type: 2}
+  playerDamageDropOff:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 100
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.5
+      value: 100
+      inSlope: -0.0015666456
+      outSlope: -6.5064983
+      tangentMode: 1
+    - serializedVersion: 2
+      time: 3
+      value: 0
+      inSlope: -12.547984
+      outSlope: -12.547984
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  playerForceDropOff:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 600
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 2.494596
+      value: 450.3273
+      inSlope: -106.638756
+      outSlope: -106.638756
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 4.9940186
+      value: 0
+      inSlope: -252.15018
+      outSlope: -252.15018
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  playerDamageLayer:
+    serializedVersion: 2
+    m_Bits: 1024
+  enemyDamageLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!212 &212807632168475078
 SpriteRenderer:
   m_ObjectHideFlags: 1

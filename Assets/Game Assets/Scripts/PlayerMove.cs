@@ -22,7 +22,6 @@ internal sealed class PlayerMove : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(this.transform.position, Vector2.down, heightThreshold, this.groundMask);
         if (hit)
         {
-            print(hit.transform.name);
             if (hit.transform.CompareTag("Walkable"))
             {
                 return true;
@@ -40,7 +39,6 @@ internal sealed class PlayerMove : MonoBehaviour
     private void Update()
     {
         float movInp = Input.GetAxisRaw("Horizontal") * this.moveSpeed;
-        print(movInp);
         if (Input.GetButtonDown("Jump"))
         {
             if (this.IsGrounded(this.maxGroundedHeight))
