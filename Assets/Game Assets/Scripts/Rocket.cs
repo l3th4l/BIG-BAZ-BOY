@@ -38,20 +38,20 @@ internal sealed class Rocket : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Rocket.Instantiate(this.explosionPrefab, this.transform.position, Quaternion.identity);
-
+        Debug.Log("Gonna kms 1");
         var playerCollider = Physics2D.OverlapCircle(this.transform.position, this.PlayerDamageRadius, this.playerDamageLayer);
-        if (playerCollider)
+        if (playerCollider != null)
         {
+            Debug.Log("KMS2");
             var deltaPos = playerCollider.transform.position - this.transform.position;
             float dist = deltaPos.magnitude;
-
+            Debug.Log("KMS3");
             float damage = this.playerDamageDropOff.Evaluate(dist);
             playerCollider.GetComponent<Player>().ApplyDamage(damage);
-
+            Debug.Log("KMS4");
             float forceMagnitude = this.playerForceDropOff.Evaluate(dist);
             playerCollider.GetComponent<Rigidbody2D>().AddForce(deltaPos.normalized * forceMagnitude);
 
-            print(forceMagnitude + " " + dist + " " + damage);
         }
 
         var enemyColliders = Physics2D.OverlapCircleAll(this.transform.position, this.enemyDamageRadius, this.enemyDamageLayer);
@@ -61,7 +61,8 @@ internal sealed class Rocket : MonoBehaviour
             enemyCollider.GetComponent<Enemy>().Kill();
         }
 
-        Rocket.Destroy(this.gameObject);
+        Destroy(this.gameObject);
+        Debug.Log("Gonna kms");
     }
 
     private void OnDrawGizmosSelected()
