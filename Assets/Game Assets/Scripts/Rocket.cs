@@ -61,7 +61,7 @@ internal sealed class Rocket : MonoBehaviour
             enemyCollider.GetComponent<Enemy>().Kill();
         }
 
-        Rocket.Destroy(this.gameObject, 3f);
+        Rocket.Destroy(this.gameObject);
     }
 
     private void OnDrawGizmosSelected()
