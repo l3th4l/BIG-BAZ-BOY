@@ -39,7 +39,7 @@ internal sealed class PlayerMove : MonoBehaviour
     private void Update()
     {
         float movInp = Input.GetAxisRaw("Horizontal") * this.moveSpeed;
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump") || (Input.GetKeyDown(KeyCode.W)))
         {
             if (this.IsGrounded(this.maxGroundedHeight))
             {
