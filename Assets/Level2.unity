@@ -165,7 +165,7 @@ Prefab:
     - target: {fileID: 114760472003114622, guid: 7474a2573ec97a247a6df14683aea12c,
         type: 2}
       propertyPath: dampFactor
-      value: 40
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 114760472003114622, guid: 7474a2573ec97a247a6df14683aea12c,
         type: 2}
@@ -1620,6 +1620,46 @@ Prefab:
     - target: {fileID: 4920863785229104, guid: 085eac24bd039d14cbbbf1f133535517, type: 2}
       propertyPath: m_RootOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114213917048804804, guid: 085eac24bd039d14cbbbf1f133535517,
+        type: 2}
+      propertyPath: playerForceDropOff.m_Curve.Array.data[0].value
+      value: 217.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114213917048804804, guid: 085eac24bd039d14cbbbf1f133535517,
+        type: 2}
+      propertyPath: playerForceDropOff.m_Curve.Array.data[0].time
+      value: 0.020809174
+      objectReference: {fileID: 0}
+    - target: {fileID: 114213917048804804, guid: 085eac24bd039d14cbbbf1f133535517,
+        type: 2}
+      propertyPath: playerForceDropOff.m_Curve.Array.data[1].time
+      value: 3.1188483
+      objectReference: {fileID: 0}
+    - target: {fileID: 114213917048804804, guid: 085eac24bd039d14cbbbf1f133535517,
+        type: 2}
+      propertyPath: playerForceDropOff.m_Curve.Array.data[1].value
+      value: 191.57733
+      objectReference: {fileID: 0}
+    - target: {fileID: 114213917048804804, guid: 085eac24bd039d14cbbbf1f133535517,
+        type: 2}
+      propertyPath: playerForceDropOff.m_Curve.Array.data[2].time
+      value: 4.931595
+      objectReference: {fileID: 0}
+    - target: {fileID: 114213917048804804, guid: 085eac24bd039d14cbbbf1f133535517,
+        type: 2}
+      propertyPath: playerForceDropOff.m_Curve.Array.data[2].value
+      value: -3.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 114213917048804804, guid: 085eac24bd039d14cbbbf1f133535517,
+        type: 2}
+      propertyPath: playerForceDropOff.m_Curve.Array.data[1].inSlope
+      value: -36.220505
+      objectReference: {fileID: 0}
+    - target: {fileID: 114213917048804804, guid: 085eac24bd039d14cbbbf1f133535517,
+        type: 2}
+      propertyPath: playerForceDropOff.m_Curve.Array.data[1].outSlope
+      value: -36.220505
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 085eac24bd039d14cbbbf1f133535517, type: 2}
