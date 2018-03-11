@@ -16,6 +16,12 @@ public class HealthRegeneration : MonoBehaviour
     [SerializeField]
     private GameEvent regenStart, regenStop;
 
+    private void OnDestroy()
+    {
+        this.regenStart.Unregister(this.StartRegen);
+        this.regenStop.Unregister(this.StopRegen);
+    }
+
     private void Start()
     {
         this.regenStart.Register(this.StartRegen);

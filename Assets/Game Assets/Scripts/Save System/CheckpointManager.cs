@@ -24,6 +24,11 @@ internal sealed class CheckpointManager : MonoBehaviour
         get { return Application.persistentDataPath + this.saveName; }
     }
 
+    public void DeleteSave()
+    {
+        File.Delete(this.SavePath);
+    }
+
     public void Load()
     {
         using (var sr = new FileStream(this.SavePath, FileMode.Open))
@@ -51,7 +56,15 @@ internal sealed class CheckpointManager : MonoBehaviour
     {
         this.saveables = CheckpointManager.FindObjectsOfType<Saveable>();
 
-        this.Load();
+        if (File.Exists(this.SavePath))
+        {
+            this.Load();
+        }
+        else
+        {
+            this.Save();
+            this.Load();
+        }
     }
 
     private void Update()
