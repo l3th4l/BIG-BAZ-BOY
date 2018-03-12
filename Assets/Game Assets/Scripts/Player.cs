@@ -32,6 +32,11 @@ internal sealed class Player : MonoBehaviour
                 this.StopCoroutine(this.regenCooldown);
             }
 
+            if (this.health == 0f)
+            {
+                CheckpointManager.Instance.Load();
+            }
+
             this.regenCooldown = this.StartCoroutine(this.DoRegenCooldown());
         }
     }

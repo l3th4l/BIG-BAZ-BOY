@@ -11,7 +11,8 @@ internal sealed class WeaponAimer : MonoBehaviour
 
     private void Update()
     {
-        Vector3 mouseDir = (Input.mousePosition - Camera.main.WorldToScreenPoint(this.transform.position)).normalized;
+        Vector2 deltaPos = Input.mousePosition - Camera.main.WorldToScreenPoint(this.transform.position);
+        Vector2 mouseDir = deltaPos.normalized;
         this.transform.localPosition = mouseDir * this.offset;
         this.transform.up = mouseDir;
     }

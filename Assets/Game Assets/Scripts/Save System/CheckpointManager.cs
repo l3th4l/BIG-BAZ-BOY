@@ -1,13 +1,21 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using ScriptableObjectUtility.Variables;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 internal sealed class CheckpointManager : MonoBehaviour
 {
+    private const string SaveName = @"\currentlvl.save";
     private IFormatter formatter = new BinaryFormatter();
+
+    [SerializeField]
+    private int level1Index = 1;
+
+    private SaveData levelData;
 
     [SerializeField]
     private FloatVariable playerHealth;
@@ -15,56 +23,87 @@ internal sealed class CheckpointManager : MonoBehaviour
     [SerializeField]
     private FloatReference playerMaxHealth;
 
-    private Saveable[] saveables;
-
-    private string saveName = @"\test.save";
-
-    private string SavePath
+    public static bool HasSave
     {
-        get { return Application.persistentDataPath + this.saveName; }
+        get { return File.Exists(SavePath); }
     }
 
-    public void DeleteSave()
+    public static CheckpointManager Instance { get; private set; }
+
+    private static string SavePath
     {
-        File.Delete(this.SavePath);
+        get { return Application.persistentDataPath + SaveName; }
+    }
+
+    public static void DeleteSave()
+    {
+        File.Delete(SavePath);
     }
 
     public void Load()
     {
-        using (var sr = new FileStream(this.SavePath, FileMode.Open))
+        using (var sr = new FileStream(SavePath, FileMode.Open))
         {
-            var entityStates = (EntityState[])this.formatter.Deserialize(sr);
+            this.levelData = (SaveData)this.formatter.Deserialize(sr);
+        }
 
-            for (int i = 0; i < this.saveables.Length; i++)
+        if (this.levelData.LevelIndex == SceneManager.GetActiveScene().buildIndex)
+        {
+            print("Load level data");
+            this.LoadLevelData();
+        }
+        else
+        {
+            AsyncOperation op = SceneManager.LoadSceneAsync(this.levelData.LevelIndex);
+            op.completed += this.OnLevelLoaded;
+        }
+    }
+
+    public void ResetGame()
+    {
+        SceneManager.LoadScene(this.level1Index);
+    }
+
+    public void Save()
+    {
+        var saveables = CheckpointManager.FindObjectsOfType<Saveable>();
+
+        using (var sw = new FileStream(SavePath, FileMode.Create))
+        {
+            SaveData saveData = new SaveData
             {
-                this.saveables[i].Load(entityStates[i]);
-            }
+                EntityStates = saveables.Select(c => c.Save()).ToArray(),
+                LevelIndex = SceneManager.GetActiveScene().buildIndex
+            };
+
+            this.formatter.Serialize(sw, saveData);
+        }
+    }
+
+    private void LoadLevelData()
+    {
+        var saveables = CheckpointManager.FindObjectsOfType<Saveable>();
+        for (int i = 0; i < saveables.Length; i++)
+        {
+            saveables[i].Load(this.levelData.EntityStates[i]);
         }
 
         this.playerHealth.Value = this.playerMaxHealth;
     }
 
-    public void Save()
+    private void OnLevelLoaded(AsyncOperation op)
     {
-        using (var sw = new FileStream(this.SavePath, FileMode.Create))
-        {
-            this.formatter.Serialize(sw, this.saveables.Select(c => c.Save()).ToArray());
-        }
+        print("Load level data after scene load");
+        this.LoadLevelData();
     }
 
     private void Start()
     {
-        this.saveables = CheckpointManager.FindObjectsOfType<Saveable>();
+        CheckpointManager.DontDestroyOnLoad(this.gameObject);
 
-        if (File.Exists(this.SavePath))
-        {
-            this.Load();
-        }
-        else
-        {
-            this.Save();
-            this.Load();
-        }
+        Debug.Assert(Instance == null, "More than one CheckpointManager");
+
+        Instance = this;
     }
 
     private void Update()
@@ -78,5 +117,12 @@ internal sealed class CheckpointManager : MonoBehaviour
         {
             this.Load();
         }
+    }
+
+    [Serializable]
+    private struct SaveData
+    {
+        public EntityState[] EntityStates;
+        public int LevelIndex;
     }
 }
