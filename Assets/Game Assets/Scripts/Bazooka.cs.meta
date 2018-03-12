@@ -5,7 +5,11 @@ licenseType: Free
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - rb: {instanceID: 0}
+  - rocketPrefab: {fileID: 114213917048804804, guid: 085eac24bd039d14cbbbf1f133535517,
+      type: 2}
+  - rocketSpawn: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

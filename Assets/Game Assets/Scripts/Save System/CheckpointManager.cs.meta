@@ -5,7 +5,8 @@ licenseType: Free
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - playerHealth: {fileID: 11400000, guid: 4be5cc92bf84ab14a9c296209f4ef32c, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

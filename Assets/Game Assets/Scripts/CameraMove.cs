@@ -19,6 +19,6 @@ internal sealed class CameraMove : MonoBehaviour
 
     private void Start()
     {
-        this.offset = this.transform.position - this.target.position;
+        this.offset = this.transform.position;
     }
 }
