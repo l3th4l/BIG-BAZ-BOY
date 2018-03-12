@@ -3,7 +3,11 @@ guid: 050f213b422c87645b17dd0fbb0e7773
 timeCreated: 1520829291
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: Ind_In1_0
+    21300002: Ind_In1_1
+    21300004: Ind_In1_2
+    21300006: Ind_In1_3
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -46,7 +50,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 600
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -88,7 +92,63 @@ TextureImporter:
     androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Ind_In1_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 240
+        width: 236.5
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ind_In1_1
+      rect:
+        serializedVersion: 2
+        x: 236
+        y: 240
+        width: 236.5
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ind_In1_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 236.5
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Ind_In1_3
+      rect:
+        serializedVersion: 2
+        x: 236
+        y: 0
+        width: 236.5
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
     outline: []
     physicsShape: []
   spritePackingTag: 
