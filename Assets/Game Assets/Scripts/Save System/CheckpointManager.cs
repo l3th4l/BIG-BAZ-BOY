@@ -87,8 +87,6 @@ internal sealed class CheckpointManager : MonoBehaviour
         {
             saveables[i].Load(this.levelData.EntityStates[i]);
         }
-
-        this.playerHealth.Value = this.playerMaxHealth;
     }
 
     private void OnLevelLoaded(AsyncOperation op)
